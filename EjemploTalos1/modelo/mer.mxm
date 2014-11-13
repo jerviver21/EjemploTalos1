@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><Model version="5.0">
+    <Configuration>
+        <Property name="dialect" value="PostgresDialect"/>
+        <Property name="ALIAS" value="ServerLocal"/>
+        <Property name="DRIVER" value="org.postgresql.Driver"/>
+        <Property name="PASSWORD" value="pgsql"/>
+        <Property name="PROMPTFORPASSWORD" value="false"/>
+        <Property name="URL" value="jdbc:postgresql://localhost:5432/facturacion"/>
+        <Property name="USER" value="postgres"/>
+    </Configuration>
+    <CustomTypes/>
+    <Domains/>
+    <Tables>
+        <Table id="9168fbce-db44-4b09-b0f9-753500ac4f75" name="bill" schema="">
+            <Property name="LOCATION" value="195:99"/>
+            <Attribute datatype="bigserial" defaultvalue="" extra="" fraction="null" id="2c91c058-c726-42a3-89fd-5f575191b1ce" name="id" nullable="false" scale="10" size=""/>
+            <Attribute datatype="timestamp" defaultvalue="" extra="" fraction="null" id="c11953b8-b873-4cf1-80cb-655ae13418b3" name="purchasedate" nullable="false" scale="10" size=""/>
+            <Attribute datatype="varchar" defaultvalue="" extra="" fraction="null" id="7c4b9bf1-ef5d-45fe-8da3-bc5866813e8e" name="clientname" nullable="false" scale="10" size="255"/>
+            <Attribute datatype="varchar" defaultvalue="" extra="" fraction="null" id="aa618996-b494-4c9a-b8b4-f0d7b49381dc" name="clientid" nullable="false" scale="10" size="16"/>
+            <Attribute datatype="numeric" defaultvalue="0.0" extra="" fraction="2" id="a7b2bd66-4f42-4b63-af41-7197d4cfdbd2" name="subtotal" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="numeric" defaultvalue="0.0" extra="" fraction="2" id="f1c89c18-386e-4367-a6f4-e2afd64d3161" name="taxes" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="numeric" defaultvalue="0.0" extra="" fraction="2" id="d380a4a3-a497-4225-b51b-26794fbfe77e" name="total" nullable="false" scale="10" size="10"/>
+            <Index id="eb57adf3-c543-4ba3-9255-9eab2613b4f9" indextype="PRIMARYKEY" name="bill_pk">
+                <Indexattribute attributerefid="2c91c058-c726-42a3-89fd-5f575191b1ce" id="ea460615-cb07-4eb7-b322-25bb82bb0386"/>
+            </Index>
+        </Table>
+        <Table id="0f4a5e19-25d9-46fa-81f7-cd771e1a7dd8" name="item" schema="">
+            <Property name="LOCATION" value="720:122"/>
+            <Attribute datatype="bigserial" defaultvalue="" extra="" fraction="null" id="138e7af7-4ff3-45ea-800c-97acfcadae5c" name="id" nullable="false" scale="10" size=""/>
+            <Attribute datatype="bigint" defaultvalue="" extra="" fraction="null" id="aa4cfef1-e55b-4afd-ad6f-bf4a502ccd4c" name="id_bill" nullable="false" scale="10" size=""/>
+            <Attribute datatype="varchar" defaultvalue="" extra="" fraction="null" id="ba72118c-c321-40dd-a5de-35ca303cb9a3" name="productname" nullable="false" scale="10" size="255"/>
+            <Attribute datatype="numeric" defaultvalue="0.0" extra="" fraction="2" id="75a86a42-414c-4359-8fd7-9ff8202fad3d" name="price" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="numeric" defaultvalue="0.0" extra="" fraction="2" id="a0db1f06-9b54-4a5f-84ff-91524ce3821a" name="tax_rate" nullable="false" scale="10" size="10"/>
+            <Index id="05d42206-93dd-4937-a1a1-2bb726836c4b" indextype="PRIMARYKEY" name="item_pk">
+                <Indexattribute attributerefid="138e7af7-4ff3-45ea-800c-97acfcadae5c" id="170a87d8-a7d2-4830-8896-46ba006b82a7"/>
+            </Index>
+        </Table>
+    </Tables>
+    <Relations>
+        <Relation exportingtablerefid="9168fbce-db44-4b09-b0f9-753500ac4f75" id="451fc899-d758-41fb-90b3-e647b108f3ef" importingtablerefid="0f4a5e19-25d9-46fa-81f7-cd771e1a7dd8" name="bill_item_fk1" ondelete="CASCADE" onupdate="CASCADE">
+            <Mapping exportingexpressionrefid="ea460615-cb07-4eb7-b322-25bb82bb0386" importingattributerefid="aa4cfef1-e55b-4afd-ad6f-bf4a502ccd4c"/>
+        </Relation>
+    </Relations>
+    <Views/>
+    <Subjectareas/>
+    <Comments/>
+</Model>
